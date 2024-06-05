@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gleich/tdjrl/src/config"
+)
 
 func main() {
-	fmt.Println("Hello world!")
+	loadedConfig := config.Load()
+	fmt.Printf("%+v\n", loadedConfig)
 }
