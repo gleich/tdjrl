@@ -14,10 +14,7 @@ const completedTask = todos
     const completionDate = todo.completionDate();
     if (!completionDate) return false;
     const completedTimestamp = new Date(completionDate).getTime();
-    return (
-      completedTimestamp >= yesterdayTimestamp &&
-      completedTimestamp < todayTimestamp
-    );
+    return completedTimestamp >= yesterdayTimestamp;
   })
   .map((todo) => {
     const project = todo.project();
