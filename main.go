@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	todos := things.TodosFromLogbook()
+	todos := things.TodosFromLogbook(false)
 	for _, todo := range todos {
 		lumber.Debug(todo.Name)
 	}

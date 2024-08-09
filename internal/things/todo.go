@@ -8,7 +8,7 @@ type Todo struct {
 	Notes       string    `json:"notes"`
 	Tags        string    `json:"tags"`
 	ID          string    `json:"id"`
-	CompletedAt time.Time `json:"completed_date"`
+	CompletedAt time.Time `json:"completion_date"`
 	Project     struct {
 		ID   string `json:"id"`
 		Name string `json:"name"`
