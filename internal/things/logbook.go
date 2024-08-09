@@ -29,20 +29,14 @@ func TodosFromLogbook(today bool) []Todo {
 	}
 
 	var filteredTodos []Todo
-	now := time.Now()
 	format := "01/02/2006"
-	if today {
-		for _, t := range todos {
-			if t.CompletedAt.In(time.Local).Format(format) == now.Format(format) {
-				filteredTodos = append(filteredTodos, t)
-			}
-		}
-	} else {
-		yesterday := now.AddDate(0, 0, -1)
-		for _, t := range todos {
-			if t.CompletedAt.In(time.Local).Format(format) == yesterday.Format(format) {
-				filteredTodos = append(filteredTodos, t)
-			}
+	now := time.Now()
+	if !today {
+		now = now.AddDate(0, 0, -1)
+	}
+	for _, t := range todos {
+		if t.CompletedAt.In(time.Local).Format(format) == now.Format(format) {
+			filteredTodos = append(filteredTodos, t)
 		}
 	}
 
