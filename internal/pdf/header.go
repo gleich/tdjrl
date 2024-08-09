@@ -10,7 +10,7 @@ import (
 )
 
 func AppendHeader(doc fpdf.Pdf, conf config.Config) {
-	doc.SetFont("Arial", "B", 16)
+	doc.SetFont("Arial", "B", 20)
 	doc.CellFormat(0, 10, conf.Name, "", 0, "L", false, 0, "")
 	now := time.Now()
 	doc.CellFormat(
@@ -30,14 +30,14 @@ func AppendHeader(doc fpdf.Pdf, conf config.Config) {
 		0,
 		"",
 	)
-	doc.SetFont("Arial", "B", 9)
-	doc.SetY(14.5)
+	doc.SetFont("Arial", "I", 9)
+	doc.SetY(16)
 	doc.CellFormat(
 		0,
 		10,
 		fmt.Sprintf(
 			"Generated %s",
-			now.Format("01/02/06 at 03:04 PM"),
+			now.Format("01/02/06 @ 03:04 PM"),
 		),
 		"",
 		0,

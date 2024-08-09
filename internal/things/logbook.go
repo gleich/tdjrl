@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"os/exec"
+	"sort"
 	"time"
 
 	"github.com/gleich/lumber/v2"
@@ -35,10 +36,16 @@ func TodosFromLogbook(today bool) []Todo {
 		now = now.AddDate(0, 0, -1)
 	}
 	for _, t := range todos {
-		if t.CompletedAt.In(time.Local).Format(format) == now.Format(format) {
+		t.CompletedAt = t.CompletedAt.In(time.Local)
+		if t.CompletedAt.Format(format) == now.Format(format) {
 			filteredTodos = append(filteredTodos, t)
 		}
 	}
+
+	sort.Slice(
+		filteredTodos,
+		func(i, j int) bool { return filteredTodos[j].CompletedAt.After(filteredTodos[i].CompletedAt) },
+	)
 
 	lumber.Success("Loaded", len(filteredTodos), "tasks from Thing's logbook")
 	return filteredTodos
