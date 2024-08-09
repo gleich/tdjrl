@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/gleich/tdjrl/src/config"
+	"github.com/gleich/lumber/v2"
+	"github.com/gleich/tdjrl/internal/things"
 )
 
 func main() {
-	loadedConfig := config.Load()
-	fmt.Printf("%+v\n", loadedConfig)
+	todos := things.TodosFromLogbook()
+	for _, todo := range todos {
+		lumber.Debug(todo.Name)
+	}
 }
