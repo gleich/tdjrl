@@ -12,6 +12,8 @@ import (
 //go:embed logbook.js
 var logbookScript string
 
+// Loads todos from Thing's logbook.
+// Either loads the tasks from today or yesterday
 func TodosFromLogbook(today bool) []Todo {
 	lumber.Info("Loading todos from Thing's logbook")
 

@@ -2,7 +2,7 @@ module github.com/gleich/tdjrl
 
 go 1.22.6
 
-require github.com/gleich/lumber/v2 v2.2.0
+require github.com/gleich/lumber/v2 v2.3.0
 
 require (
 	github.com/fatih/color v1.17.0 // indirect
