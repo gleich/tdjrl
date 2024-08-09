@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"time"
 
 	"github.com/gleich/lumber/v2"
@@ -12,7 +13,14 @@ func main() {
 	logger.Timezone = time.Local
 	lumber.SetLogger(logger)
 
-	todos := things.TodosFromLogbook(false)
+	today := true
+	for _, a := range os.Args {
+		if a == "--yesterday" {
+			today = false
+		}
+	}
+
+	todos := things.TodosFromLogbook(today)
 	for _, todo := range todos {
 		lumber.Debug(todo.Name)
 	}
