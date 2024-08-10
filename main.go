@@ -32,8 +32,9 @@ func main() {
 
 	doc := fpdf.New("P", "mm", "A4", "")
 	doc.AddPage()
-	pdf.AppendHeader(doc, conf)
-	pdf.WriteTodos(doc, todos)
+	pdf.Header(doc, conf)
+	pdf.Todos(doc, todos)
+	pdf.Lines(doc)
 
 	err := doc.OutputFileAndClose("out.pdf")
 	if err != nil {

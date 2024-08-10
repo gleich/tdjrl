@@ -9,7 +9,7 @@ import (
 	"github.com/go-pdf/fpdf"
 )
 
-func AppendHeader(doc fpdf.Pdf, conf config.Config) {
+func Header(doc fpdf.Pdf, conf config.Config) {
 	doc.SetFont("Arial", "B", 20)
 	doc.CellFormat(0, 10, conf.Name, "", 0, "L", false, 0, "")
 	now := time.Now()

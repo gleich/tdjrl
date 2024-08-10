@@ -5,7 +5,7 @@ import (
 	"github.com/go-pdf/fpdf"
 )
 
-func WriteTodos(doc fpdf.Pdf, todos []things.Todo) {
+func Todos(doc fpdf.Pdf, todos []things.Todo) {
 	x := 10.0
 	y := 30.0
 	gap := 5.0
