@@ -4,15 +4,16 @@ import (
 	"os"
 	"time"
 
+	"github.com/charmbracelet/huh"
 	"github.com/gleich/lumber/v2"
-	"github.com/gleich/tdjrl/internal/config"
 	"github.com/gleich/tdjrl/internal/pdf"
 	"github.com/gleich/tdjrl/internal/things"
 	"github.com/go-pdf/fpdf"
 )
 
 func main() {
-	conf := config.Read()
+	var title string
+	huh.NewInput().Title("What is the title?").Value(&title).Run()
 
 	logger := lumber.NewCustomLogger()
 	logger.Timezone = time.Local
@@ -30,7 +31,7 @@ func main() {
 	lumber.Info("Creating PDF")
 	doc := fpdf.New("P", "mm", "A4", "")
 	doc.AddPage()
-	pdf.Header(doc, conf)
+	pdf.Header(doc, title)
 	pdf.Todos(doc, todos)
 	pdf.Lines(doc)
 

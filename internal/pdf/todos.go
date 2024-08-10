@@ -7,7 +7,7 @@ import (
 
 func Todos(doc fpdf.Pdf, todos []things.Todo) {
 	x := 10.0
-	y := 30.0
+	y := 24.0
 	gap := 5.0
 	doc.SetXY(x, y)
 	for i, todo := range todos {

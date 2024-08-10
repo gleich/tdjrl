@@ -5,13 +5,12 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"github.com/gleich/tdjrl/internal/config"
 	"github.com/go-pdf/fpdf"
 )
 
-func Header(doc fpdf.Pdf, conf config.Config) {
-	doc.SetFont("Arial", "B", 20)
-	doc.CellFormat(0, 10, conf.Name, "", 0, "L", false, 0, "")
+func Header(doc fpdf.Pdf, title string) {
+	doc.SetFont("Arial", "B", 17)
+	doc.CellFormat(0, 10, title, "", 0, "L", false, 0, "")
 	now := time.Now()
 	doc.CellFormat(
 		0,
@@ -31,7 +30,7 @@ func Header(doc fpdf.Pdf, conf config.Config) {
 		"",
 	)
 	doc.SetFont("Arial", "I", 9)
-	doc.SetY(16)
+	doc.SetY(14.5)
 	doc.CellFormat(
 		0,
 		10,
