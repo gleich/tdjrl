@@ -27,14 +27,17 @@ func main() {
 
 	todos := things.TodosFromLogbook(today)
 
+	lumber.Info("Creating PDF")
 	doc := fpdf.New("P", "mm", "A4", "")
 	doc.AddPage()
 	pdf.Header(doc, conf)
 	pdf.Todos(doc, todos)
 	pdf.Lines(doc)
 
-	err := doc.OutputFileAndClose("out.pdf")
+	filename := "out.pdf"
+	err := doc.OutputFileAndClose(filename)
 	if err != nil {
 		lumber.Fatal(err, "failed to write PDF")
 	}
+	lumber.Success("Output to PDF:", filename)
 }
