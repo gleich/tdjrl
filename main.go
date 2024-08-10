@@ -26,9 +26,6 @@ func main() {
 	}
 
 	todos := things.TodosFromLogbook(today)
-	for _, todo := range todos {
-		lumber.Debug(todo.Name)
-	}
 
 	doc := fpdf.New("P", "mm", "A4", "")
 	doc.AddPage()
